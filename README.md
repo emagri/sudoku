@@ -56,12 +56,173 @@ package manager specific guidelines on
 ## How to use
 
 Instantiate a
-[`Board`](https://emagri.github.io/sudoku/board.html#board) class,
-passing it a list of 9 rows containing the initial Sudoku puzzle.
+[`sudoku.board.Board`](https://emagri.github.io/sudoku/board.html#board)
+class, passing it a list of 9 rows containing the initial Sudoku puzzle.
+
+``` python
+board = ['8-----41-', 
+         '-6-9-----', 
+         '3-2------', 
+         '-5---814-', 
+         '4----1--3', 
+         '-8---326-', 
+         '1-9------', 
+         '-7-3-----', 
+         '2-----85-']
+```
 
 Invoking its method `solve`, you can get a log of the processing and the
 final result.
 
+``` python
+b = Board(board)
+b.solve(False)
+```
+
+    0 *** row 5: filled cell [5, 2] with value 1
+    1 *** row 1: filled cell [1, 4] with value 1
+    2 *** row 2: filled cell [2, 1] with value 1
+    3 *** row 7: filled cell [7, 8] with value 1
+    4 *** row 8: filled cell [8, 3] with value 1
+    5 *** column 1: filled cell [4, 1] with value 2
+    6 *** row 0: filled cell [0, 4] with value 3
+    7 *** row 3: filled cell [3, 2] with value 3
+    8 *** row 8: filled cell [8, 1] with value 3
+    9 *** column 1: filled cell [6, 1] with value 4
+    10 *** column 2: filled cell [1, 2] with value 4
+    11 *** column 8: filled cell [8, 8] with value 4
+    12 *** row 4: filled cell [4, 7] with value 8
+    13 *** row 1: filled cell [1, 8] with value 8
+    14 *** column 2: filled cell [7, 2] with value 8
+    15 *** column 2: filled cell [0, 2] with value 5
+    16 *** column 0: filled cell [7, 0] with value 5
+    17 *** column 0: filled cell [3, 0] with value 6
+    18 *** column 2: filled cell [8, 2] with value 6
+    19 *** column 2: filled cell [4, 2] with value 7
+    20 *** column 0: filled cell [1, 0] with value 7
+    21 *** column 0: filled cell [5, 0] with value 9
+    22 *** column 1: filled cell [0, 1] with value 9
+    23 *** naked group of {9, 7} in block 7: removed candidates {9} from cell [7, 5]
+    24 *** naked group of {9, 7} in block 7: removed candidates {7} from cell [6, 5]
+    25 *** naked group of {9, 7} in block 7: removed candidates {7} from cell [6, 3]
+    26 *** naked group of {9, 7} in block 7: removed candidates {9} from cell [7, 4]
+    27 *** naked group of {9, 7} in block 7: removed candidates {7} from cell [6, 4]
+    28 *** pointing group of 9 in block 4 to column 4: removed candidate 9 from cell [8, 4]
+    29 *** pointing group of 7 in block 5 to column 8: removed candidate 7 from cell [0, 8]
+    30 *** pointing group of 7 in block 5 to column 8: removed candidate 7 from cell [2, 8]
+    31 *** pointing group of 7 in block 5 to column 8: removed candidate 7 from cell [6, 8]
+    32 *** pointing group of 7 in row 0 to block 1: removed candidate 7 from cell [2, 4]
+    33 *** pointing group of 7 in row 0 to block 1: removed candidate 7 from cell [2, 5]
+    34 *** pointing group of 7 in row 0 to block 1: removed candidate 7 from cell [2, 3]
+    35 *** hidden group of {3, 7} in row 6: removed candidates {6} from cell [6, 6]
+    36 *** hidden group of {3, 7} in row 6: removed candidates {2} from cell [6, 7]
+    37 *** row 8: filled cell [8, 5] with value 9
+    38 *** row 8: filled cell [8, 4] with value 7
+    39 *** column 5: filled cell [0, 5] with value 7
+    40 *** naked group of {2, 6} in column 8: removed candidates {6} from cell [2, 8]
+     |0-----------|1-----------|2-----------|3-----------|4-----------|5-----------|6-----------|7-----------|8-----------|
+    0| 8          | 9          | 5          |   -2---6---| 3          | 7          | 4          | 1          |   -2---6---|
+    1| 7          | 6          | 4          | 9          | 1          |   -2--5----|   --3-5----|   -23------| 8          |
+    2| 3          | 1          | 2          |   ---456-8-|   ---456-8-|   ---456---|   ----567-9|   ------7-9|   ----5---9|
+    3| 6          | 5          | 3          |   -2----7--|   -2------9| 8          | 1          | 4          |   ------7-9|
+    4| 4          | 2          | 7          |   ----56---|   ----56--9| 1          |   ----5---9| 8          | 3          |
+    5| 9          | 8          | 1          |   ---45-7--|   ---45----| 3          | 2          | 6          |   ----5-7--|
+    6| 1          | 4          | 9          |   -2--56-8-|   -2--56-8-|   -2--56---|   --3---7--|   --3---7--|   -2---6---|
+    7| 5          | 7          | 8          | 3          |   -2-4-6---|   -2-4-6---|   -----6--9|   -2------9| 1          |
+    8| 2          | 3          | 6          | 1          | 7          | 9          | 8          | 5          | 4          |
+     |0-----------|1-----------|2-----------|3-----------|4-----------|5-----------|6-----------|7-----------|8-----------|
+
+    False
+
 The parameter `use_brute_force` (disabled by default) enables the use of
 brute force in case attemps based on logic are not enough to solve the
 puzzle.
+
+``` python
+b = Board(board)
+b.solve(True)
+```
+
+    0 *** row 5: filled cell [5, 2] with value 1
+    1 *** row 1: filled cell [1, 4] with value 1
+    2 *** row 2: filled cell [2, 1] with value 1
+    3 *** row 7: filled cell [7, 8] with value 1
+    4 *** row 8: filled cell [8, 3] with value 1
+    5 *** column 1: filled cell [4, 1] with value 2
+    6 *** row 0: filled cell [0, 4] with value 3
+    7 *** row 3: filled cell [3, 2] with value 3
+    8 *** row 8: filled cell [8, 1] with value 3
+    9 *** column 1: filled cell [6, 1] with value 4
+    10 *** column 2: filled cell [1, 2] with value 4
+    11 *** column 8: filled cell [8, 8] with value 4
+    12 *** row 4: filled cell [4, 7] with value 8
+    13 *** row 1: filled cell [1, 8] with value 8
+    14 *** column 2: filled cell [7, 2] with value 8
+    15 *** column 2: filled cell [0, 2] with value 5
+    16 *** column 0: filled cell [7, 0] with value 5
+    17 *** column 0: filled cell [3, 0] with value 6
+    18 *** column 2: filled cell [8, 2] with value 6
+    19 *** column 2: filled cell [4, 2] with value 7
+    20 *** column 0: filled cell [1, 0] with value 7
+    21 *** column 0: filled cell [5, 0] with value 9
+    22 *** column 1: filled cell [0, 1] with value 9
+    23 *** naked group of {9, 7} in block 7: removed candidates {7} from cell [6, 3]
+    24 *** naked group of {9, 7} in block 7: removed candidates {9} from cell [7, 5]
+    25 *** naked group of {9, 7} in block 7: removed candidates {7} from cell [6, 4]
+    26 *** naked group of {9, 7} in block 7: removed candidates {7} from cell [6, 5]
+    27 *** naked group of {9, 7} in block 7: removed candidates {9} from cell [7, 4]
+    28 *** pointing group of 9 in block 4 to column 4: removed candidate 9 from cell [8, 4]
+    29 *** pointing group of 7 in block 5 to column 8: removed candidate 7 from cell [0, 8]
+    30 *** pointing group of 7 in block 5 to column 8: removed candidate 7 from cell [6, 8]
+    31 *** pointing group of 7 in block 5 to column 8: removed candidate 7 from cell [2, 8]
+    32 *** pointing group of 7 in row 0 to block 1: removed candidate 7 from cell [2, 3]
+    33 *** pointing group of 7 in row 0 to block 1: removed candidate 7 from cell [2, 5]
+    34 *** pointing group of 7 in row 0 to block 1: removed candidate 7 from cell [2, 4]
+    35 *** hidden group of {3, 7} in row 6: removed candidates {2} from cell [6, 7]
+    36 *** hidden group of {3, 7} in row 6: removed candidates {6} from cell [6, 6]
+    37 *** row 8: filled cell [8, 5] with value 9
+    38 *** row 8: filled cell [8, 4] with value 7
+    39 *** column 5: filled cell [0, 5] with value 7
+    40 *** naked group of {2, 6} in column 8: removed candidates {6} from cell [2, 8]
+    41 ****** trying brute force, removing candidate 2 from cell [0, 3]
+    42 ****** Before brute force:
+     |0-----------|1-----------|2-----------|3-----------|4-----------|5-----------|6-----------|7-----------|8-----------|
+    0| 8          | 9          | 5          |   -----6---| 3          | 7          | 4          | 1          |   -2---6---|
+    1| 7          | 6          | 4          | 9          | 1          |   -2--5----|   --3-5----|   -23------| 8          |
+    2| 3          | 1          | 2          |   ---456-8-|   ---456-8-|   ---456---|   ----567-9|   ------7-9|   ----5---9|
+    3| 6          | 5          | 3          |   -2----7--|   -2------9| 8          | 1          | 4          |   ------7-9|
+    4| 4          | 2          | 7          |   ----56---|   ----56--9| 1          |   ----5---9| 8          | 3          |
+    5| 9          | 8          | 1          |   ---45-7--|   ---45----| 3          | 2          | 6          |   ----5-7--|
+    6| 1          | 4          | 9          |   -2--56-8-|   -2--56-8-|   -2--56---|   --3---7--|   --3---7--|   -2---6---|
+    7| 5          | 7          | 8          | 3          |   -2-4-6---|   -2-4-6---|   -----6--9|   -2------9| 1          |
+    8| 2          | 3          | 6          | 1          | 7          | 9          | 8          | 5          | 4          |
+     |0-----------|1-----------|2-----------|3-----------|4-----------|5-----------|6-----------|7-----------|8-----------|
+
+    43 ****** trying brute force, removing candidate 6 from cell [0, 3]
+    44 ****** Before brute force:
+     |0-----------|1-----------|2-----------|3-----------|4-----------|5-----------|6-----------|7-----------|8-----------|
+    0| 8          | 9          | 5          |   -2-------| 3          | 7          | 4          | 1          |   -2---6---|
+    1| 7          | 6          | 4          | 9          | 1          |   -2--5----|   --3-5----|   -23------| 8          |
+    2| 3          | 1          | 2          |   ---456-8-|   ---456-8-|   ---456---|   ----567-9|   ------7-9|   ----5---9|
+    3| 6          | 5          | 3          |   -2----7--|   -2------9| 8          | 1          | 4          |   ------7-9|
+    4| 4          | 2          | 7          |   ----56---|   ----56--9| 1          |   ----5---9| 8          | 3          |
+    5| 9          | 8          | 1          |   ---45-7--|   ---45----| 3          | 2          | 6          |   ----5-7--|
+    6| 1          | 4          | 9          |   -2--56-8-|   -2--56-8-|   -2--56---|   --3---7--|   --3---7--|   -2---6---|
+    7| 5          | 7          | 8          | 3          |   -2-4-6---|   -2-4-6---|   -----6--9|   -2------9| 1          |
+    8| 2          | 3          | 6          | 1          | 7          | 9          | 8          | 5          | 4          |
+     |0-----------|1-----------|2-----------|3-----------|4-----------|5-----------|6-----------|7-----------|8-----------|
+
+    45 *** PUZZLE SOLVED WITH BRUTE FORCE
+     |0--|1--|2--|3--|4--|5--|6--|7--|8--|
+    0| 8 | 9 | 5 | 2 | 3 | 7 | 4 | 1 | 6 |
+    1| 7 | 6 | 4 | 9 | 1 | 5 | 3 | 2 | 8 |
+    2| 3 | 1 | 2 | 8 | 6 | 4 | 9 | 7 | 5 |
+    3| 6 | 5 | 3 | 7 | 2 | 8 | 1 | 4 | 9 |
+    4| 4 | 2 | 7 | 6 | 9 | 1 | 5 | 8 | 3 |
+    5| 9 | 8 | 1 | 4 | 5 | 3 | 2 | 6 | 7 |
+    6| 1 | 4 | 9 | 5 | 8 | 6 | 7 | 3 | 2 |
+    7| 5 | 7 | 8 | 3 | 4 | 2 | 6 | 9 | 1 |
+    8| 2 | 3 | 6 | 1 | 7 | 9 | 8 | 5 | 4 |
+     |0--|1--|2--|3--|4--|5--|6--|7--|8--|
+
+    True

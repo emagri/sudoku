@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://emagri.github.io/sudoku/core.html</loc>
-    <lastmod>2025-11-17T14:08:57.837Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emagri.github.io/sudoku/board.html</loc>
-    <lastmod>2025-11-17T18:57:40.690Z</lastmod>
-  </url>
-  <url>
-    <loc>https://emagri.github.io/sudoku/main.html</loc>
-    <lastmod>2025-11-17T18:57:40.992Z</lastmod>
+    <loc>https://emagri.github.io/sudoku/index.html</loc>
+    <lastmod>2025-11-17T23:53:50.552Z</lastmod>
   </url>
   <url>
     <loc>https://emagri.github.io/sudoku/cell.html</loc>
-    <lastmod>2025-11-17T18:57:40.702Z</lastmod>
+    <lastmod>2025-11-17T23:26:19.439Z</lastmod>
   </url>
   <url>
-    <loc>https://emagri.github.io/sudoku/index.html</loc>
-    <lastmod>2025-11-17T18:57:40.915Z</lastmod>
+    <loc>https://emagri.github.io/sudoku/main.html</loc>
+    <lastmod>2025-11-17T23:26:19.772Z</lastmod>
+  </url>
+  <url>
+    <loc>https://emagri.github.io/sudoku/board.html</loc>
+    <lastmod>2025-11-17T23:26:19.457Z</lastmod>
   </url>
 </urlset>
