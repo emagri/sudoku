@@ -1,0 +1,69 @@
+[
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "foo\n\n foo ()"
+  },
+  {
+    "objectID": "board.html",
+    "href": "board.html",
+    "title": "board",
+    "section": "",
+    "text": "source\n\nBoard\n\n Board (initial_cells)\n\nInitialize self. See help(type(self)) for accurate signature.",
+    "crumbs": [
+      "board"
+    ]
+  },
+  {
+    "objectID": "cell.html",
+    "href": "cell.html",
+    "title": "cell",
+    "section": "",
+    "text": "source\n\nCell\n\n Cell (row, col, value=None)\n\nInitialize self. See help(type(self)) for accurate signature.\n\nsource\n\n\nHouse\n\n House (*values)\n\n*Create a collection of name/value pairs.\nExample enumeration:\n\n\n\nclass Color(Enum): … RED = 1 … BLUE = 2 … GREEN = 3\n\n\n\nAccess them by:\n\nattribute access:\n\n\n\nColor.RED &lt;Color.RED: 1&gt;\n\n\n\nvalue lookup:\n\n\n\nColor(1) &lt;Color.RED: 1&gt;\n\n\n\nname lookup:\n\n\n\nColor[‘RED’] &lt;Color.RED: 1&gt;\n\n\n\n\nEnumerations can be iterated over, and know how many members they have:\n\n\n\nlen(Color) 3\n\n\n\n\n\n\nlist(Color) [&lt;Color.RED: 1&gt;, &lt;Color.BLUE: 2&gt;, &lt;Color.GREEN: 3&gt;]\n\n\n\nMethods can be added to enumerations, and members can have their own attributes – see the documentation for details.*",
+    "crumbs": [
+      "cell"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "sudoku",
+    "section": "",
+    "text": "This file will become your README and also the index of your documentation.",
+    "crumbs": [
+      "sudoku"
+    ]
+  },
+  {
+    "objectID": "index.html#developer-guide",
+    "href": "index.html#developer-guide",
+    "title": "sudoku",
+    "section": "Developer Guide",
+    "text": "Developer Guide\nIf you are new to using nbdev here are some useful pointers to get you started.\n\nInstall sudoku in Development mode\n# make sure sudoku package is installed in development mode\n$ pip install -e .\n\n# make changes under nbs/ directory\n# ...\n\n# compile to have changes apply to sudoku\n$ nbdev_prepare",
+    "crumbs": [
+      "sudoku"
+    ]
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "sudoku",
+    "section": "Usage",
+    "text": "Usage\n\nInstallation\nInstall latest from the GitHub repository:\n$ pip install git+https://github.com/emagri/sudoku.git\nor from conda\n$ conda install -c emagri sudoku\nor from pypi\n$ pip install sudoku\n\n\nDocumentation\nDocumentation can be found hosted on this GitHub repository’s pages. Additionally you can find package manager specific guidelines on conda and pypi respectively.",
+    "crumbs": [
+      "sudoku"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "sudoku",
+    "section": "How to use",
+    "text": "How to use\nFill me in please! Don’t forget code examples:\n\n1+1\n\n2",
+    "crumbs": [
+      "sudoku"
+    ]
+  }
+]
