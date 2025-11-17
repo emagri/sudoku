@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "sudoku"
+  site-url: "https://emagri.github.io/sudoku"
+  description: "Sudoku solver"
+  repo-branch: main
+  repo-url: "https://github.com/emagri/sudoku"
