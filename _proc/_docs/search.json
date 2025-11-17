@@ -31,7 +31,7 @@
     "href": "index.html",
     "title": "sudoku",
     "section": "",
-    "text": "This file will become your README and also the index of your documentation.",
+    "text": "If you are new to using nbdev here are some useful pointers to get you started.\n\n\n# make sure sudoku package is installed in development mode\n$ pip install -e .\n\n# make changes under nbs/ directory\n# ...\n\n# compile to have changes apply to sudoku\n$ nbdev_prepare",
     "crumbs": [
       "sudoku"
     ]
@@ -40,8 +40,8 @@
     "objectID": "index.html#developer-guide",
     "href": "index.html#developer-guide",
     "title": "sudoku",
-    "section": "Developer Guide",
-    "text": "Developer Guide\nIf you are new to using nbdev here are some useful pointers to get you started.\n\nInstall sudoku in Development mode\n# make sure sudoku package is installed in development mode\n$ pip install -e .\n\n# make changes under nbs/ directory\n# ...\n\n# compile to have changes apply to sudoku\n$ nbdev_prepare",
+    "section": "",
+    "text": "If you are new to using nbdev here are some useful pointers to get you started.\n\n\n# make sure sudoku package is installed in development mode\n$ pip install -e .\n\n# make changes under nbs/ directory\n# ...\n\n# compile to have changes apply to sudoku\n$ nbdev_prepare",
     "crumbs": [
       "sudoku"
     ]
@@ -61,7 +61,7 @@
     "href": "index.html#how-to-use",
     "title": "sudoku",
     "section": "How to use",
-    "text": "How to use\nFill me in please! Don’t forget code examples:\n\n1+1\n\n2",
+    "text": "How to use\nInstantiate a Board class, passing it a list of 9 rows containing the initial Sudoku puzzle.\nInvoking its method solve, you can get a log of the processing and the final result.\nThe parameter use_brute_force (disabled by default) enables the use of brute force in case attemps based on logic are not enough to solve the puzzle.",
     "crumbs": [
       "sudoku"
     ]

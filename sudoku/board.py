@@ -277,7 +277,10 @@ class Board:
         solved = np.array([x.get_value() != None for x in self.cells.flatten()])
         return solved[solved == False].size == 0
     
-    def solve(self, use_brute_force = False, print_results = True):
+    def solve(self, 
+              use_brute_force = False, # if methods based on logic fail, solve the puzzle traying all values for the remaining cells 
+              print_results = True): # print logs and final board
+        "Tries to solve the board given its current state"
         found = self._solve_loop()
         while found:        
             found = self._solve_loop()
