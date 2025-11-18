@@ -16,7 +16,7 @@ title: cell
 
 >      Cell (row, col, value=None)
 
-*Initialize self.  See help(type(self)) for accurate signature.*
+*Cell of Sudoku board*
 
 
 ---
@@ -63,6 +63,21 @@ Enumerations can be iterated over, and know how many members they have:
 
 Methods can be added to enumerations, and members can have their own
 attributes -- see the documentation for details.*
+
+
+---
+
+[source](https://github.com/emagri/sudoku/blob/main/sudoku/cell.py#L25){target="_blank" style="float:right; font-size:smaller"}
+
+### Cell.show
+
+>      Cell.show (with_candidates)
+
+*Show textual representation of the cell*
+
+|    | **Details** |
+| -- | ----------- |
+| with_candidates | also show candidate values |
 
 
 

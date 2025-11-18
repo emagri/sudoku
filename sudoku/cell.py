@@ -16,12 +16,15 @@ class House(Enum):
     BLOCK = "block"
     
 class Cell:
+    "Cell of Sudoku board"
     def __init__(self, row, col, value=None):
         self.row = row
         self.col = col
         self._value = value
         self.candidates = set() if self._value != None else ALL.copy()
-    def show(self, with_candidates):
+    def show(self, 
+             with_candidates): # also show candidate values
+        "Show textual representation of the cell"
         v = "" if self._value == None else str(self._value)
         c = ""
         for i in range(1, 10):

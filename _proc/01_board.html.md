@@ -1,5 +1,6 @@
 ---
-description: Class for Sudoku board
+description: Class for Sudoku board. Implements import and export, rendering and solving
+  of a Sudoku puzzle
 output-file: board.html
 title: board
 
@@ -16,7 +17,27 @@ title: board
 
 >      Board (initial_cells)
 
-*Initialize self.  See help(type(self)) for accurate signature.*
+*Initializes the board given the initial cell state*
+
+|    | **Details** |
+| -- | ----------- |
+| initial_cells | initial cell state |
+
+
+---
+
+[source](https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L282){target="_blank" style="float:right; font-size:smaller"}
+
+### Board.solve
+
+>      Board.solve (use_brute_force=False, print_results=True)
+
+*Tries to solve the board given its current state*
+
+|    | **Type** | **Default** | **Details** |
+| -- | -------- | ----------- | ----------- |
+| use_brute_force | bool | False | if methods based on logic fail, solve the puzzle traying all values for the remaining cells |
+| print_results | bool | True | print logs and final board |
 
 
 
