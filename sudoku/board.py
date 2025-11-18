@@ -135,10 +135,8 @@ class Board:
 
     def combinations_of_2_values(self):
         return [{v1, v2} for v1 in range(1, 10) for v2 in range(1, 10) if v2 > v1]
-        return self._check_naked_combinations(combinations)
     def combinations_of_3_values(self):
         return [{v1, v2, v3} for v1 in range(1, 10) for v2 in range(1, 10) for v3 in range(1, 10) if v2 > v1 and v3 > v2]
-        return self._check_naked_combinations(combinations)
     def combinations_of_4_values(self):
         return [{v1, v2, v3, v4} for v1 in range(1, 10) for v2 in range(1, 10) for v3 in range(1, 10) 
                         for v4 in range(1, 10) if v2 > v1 and v3 > v2 and v4 > v3]
