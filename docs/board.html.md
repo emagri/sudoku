@@ -5,7 +5,46 @@
 
 ------------------------------------------------------------------------
 
-<a href="https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L15"
+<a href="https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L16"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### Solution
+
+>  Solution (*values)
+
+\*Create a collection of name/value pairs.
+
+Example enumeration:
+
+> > > class Color(Enum): … RED = 1 … BLUE = 2 … GREEN = 3
+
+Access them by:
+
+- attribute access:
+
+  > > > Color.RED \<Color.RED: 1\>
+
+- value lookup:
+
+  > > > Color(1) \<Color.RED: 1\>
+
+- name lookup:
+
+  > > > Color\[‘RED’\] \<Color.RED: 1\>
+
+Enumerations can be iterated over, and know how many members they have:
+
+> > > len(Color) 3
+
+> > > list(Color) \[\<Color.RED: 1\>, \<Color.BLUE: 2\>, \<Color.GREEN:
+> > > 3\>\]
+
+Methods can be added to enumerations, and members can have their own
+attributes – see the documentation for details.\*
+
+------------------------------------------------------------------------
+
+<a href="https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L24"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Board
@@ -32,12 +71,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L284"
+href="https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L269"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Board.solve
 
->  Board.solve (use_brute_force=False, print_results=True)
+>  Board.solve (use_brute_force=False, print_log=False, print_results=True,
+>                   check_many_solutions=False)
 
 *Tries to solve the board given its current state*
 
@@ -65,10 +105,29 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 for the remaining cells</td>
 </tr>
 <tr>
+<td>print_log</td>
+<td>bool</td>
+<td>False</td>
+<td>print logs</td>
+</tr>
+<tr>
 <td>print_results</td>
 <td>bool</td>
 <td>True</td>
-<td>print logs and final board</td>
+<td>print final board</td>
+</tr>
+<tr>
+<td>check_many_solutions</td>
+<td>bool</td>
+<td>False</td>
+<td>do not stop after first solution; if more than one solution exist,
+report it</td>
+</tr>
+<tr>
+<td><strong>Returns</strong></td>
+<td><strong>Solution</strong></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>

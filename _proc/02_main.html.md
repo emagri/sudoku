@@ -14,12 +14,14 @@ import numpy as np
 import time
 
 from sudoku.cell import *
-from sudoku.board import Board
+from sudoku.board import *
 ```
 :::
 
 
-::: {#cell-3 .cell}
+You can create a Board from a list of 9 lines of 9 chars each. Legal chars are the numbers from 1 to 9 and - for empty cell
+
+::: {#cell-4 .cell}
 ``` {.python .cell-code}
 # medium
 board = ['5-------6', 
@@ -31,11 +33,57 @@ board = ['5-------6',
          '-26-4-7--', 
          '-5---249-', 
          '8-------2']
+b = Board(board)
 ```
 :::
 
 
-::: {#cell-4 .cell}
+::: {#cell-5 .cell}
+``` {.python .cell-code}
+def foo():
+    board_wrong_format_1 = ['---------', 
+         '---------', 
+         '----7--3-', 
+         '--71-----',
+         '-1--3----', 
+         '-26-4-7--', 
+         '-5-------', 
+         '8--------']
+    return Board(board_wrong_format_1)
+
+test_fail(foo)
+```
+:::
+
+
+::: {#cell-6 .cell}
+``` {.python .cell-code}
+def foo2():
+    board_wrong_format_2 = ['---------', 
+         '---------']
+    return Board(board_wrong_format_1)
+
+test_fail(foo2)
+```
+:::
+
+
+A board can be exported, generating a line of text which can be imported in external sites, like [Sudoku solutions](https://www.sudoku-solutions.com/)
+
+::: {#cell-8 .cell}
+``` {.python .cell-code}
+b.export()
+```
+
+::: {.cell-output .cell-output-display}
+```
+'5       6 816   5   2 5 14     7  3   71 69   1  3     26 4 7   5   249 8       2'
+```
+:::
+:::
+
+
+::: {#cell-9 .cell}
 ``` {.python .cell-code}
 # hard
 board = ['----5163-', 
@@ -47,11 +95,46 @@ board = ['----5163-',
          '--6-1--57', 
          '----26---', 
          '----3786-']
+b = Board(board)
 ```
 :::
 
 
-::: {#cell-5 .cell}
+You can try to solve a board:
+
+::: {#cell-11 .cell}
+``` {.python .cell-code}
+b.solve()
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+ |0--|1--|2--|3--|4--|5--|6--|7--|8--|
+0| 4 | 8 | 9 | 7 | 5 | 1 | 6 | 3 | 2 |
+1| 7 | 6 | 2 | 3 | 9 | 4 | 1 | 8 | 5 |
+2| 5 | 1 | 3 | 8 | 6 | 2 | 7 | 9 | 4 |
+3| 6 | 5 | 7 | 1 | 4 | 3 | 9 | 2 | 8 |
+4| 2 | 3 | 8 | 6 | 7 | 9 | 5 | 4 | 1 |
+5| 9 | 4 | 1 | 2 | 8 | 5 | 3 | 7 | 6 |
+6| 3 | 9 | 6 | 4 | 1 | 8 | 2 | 5 | 7 |
+7| 8 | 7 | 5 | 9 | 2 | 6 | 4 | 1 | 3 |
+8| 1 | 2 | 4 | 5 | 3 | 7 | 8 | 6 | 9 |
+ |0--|1--|2--|3--|4--|5--|6--|7--|8--|
+
+```
+:::
+
+::: {.cell-output .cell-output-display}
+```
+<Solution.ONE_SOLUTION: 'found a solution'>
+```
+:::
+:::
+
+
+To solve a very hard puzzle, chances are you will need to use brute force
+
+::: {#cell-13 .cell}
 ``` {.python .cell-code}
 # very hard 1
 board = ['8-----41-', 
@@ -63,11 +146,12 @@ board = ['8-----41-',
          '1-9------', 
          '-7-3-----', 
          '2-----85-']
+b = Board(board)
 ```
 :::
 
 
-::: {#cell-6 .cell}
+::: {#cell-14 .cell}
 ``` {.python .cell-code}
 # very hard 2
 board = ['4-------8', 
@@ -79,71 +163,21 @@ board = ['4-------8',
          '--24--39-', 
          '-7--6-5--', 
          '1-------4']
+b = Board(board)
 ```
 :::
 
 
-A board can be exported, generating a line of text which can be imported in external sites, like [Sudoku solutions](https://www.sudoku-solutions.com/)
-
-::: {#cell-8 .cell}
+::: {#cell-15 .cell}
 ``` {.python .cell-code}
 b = Board(board)
-b.export()
-```
-
-::: {.cell-output .cell-output-display}
-```
-'4       8  9 1  7  23  54       26   9  5  4   71       24  39  7  6 5  1       4'
-```
-:::
-:::
-
-
-::: {#cell-9 .cell}
-``` {.python .cell-code}
-b = Board(board)
-b.solve()
+res = b.solve()
+test_eq(res, Solution.NOT_FOUND)
+res.value
 ```
 
 ::: {.cell-output .cell-output-stdout}
 ```
-0 *** row 1: filled cell [1, 5] with value 4
-1 *** row 7: filled cell [7, 2] with value 4
-2 *** column 3: filled cell [8, 3] with value 5
-3 *** column 0: filled cell [2, 0] with value 7
-4 *** column 0: filled cell [7, 0] with value 9
-5 *** block 6: filled cell [8, 1] with value 3
-6 *** lone single: filled cell [1, 6] with value 2
-7 *** pointing group of 1 in block 0 to row 0: removed candidate 1 from cell [0, 6]
-8 *** pointing group of 1 in block 0 to row 0: removed candidate 1 from cell [0, 7]
-9 *** pointing group of 8 in block 0 to row 1: removed candidate 8 from cell [1, 3]
-10 *** pointing group of 1 in column 6 to block 5: removed candidate 1 from cell [4, 8]
-11 *** pointing group of 1 in column 6 to block 5: removed candidate 1 from cell [3, 8]
-12 *** pointing group of 1 in column 6 to block 5: removed candidate 1 from cell [3, 7]
-13 *** pointing group of 1 in row 3 to block 3: removed candidate 1 from cell [4, 2]
-14 *** hidden group of {1, 5} in column 2: removed candidates {6} from cell [0, 2]
-15 *** hidden group of {1, 5} in column 2: removed candidates {8} from cell [3, 2]
-16 *** hidden group of {3, 5} in block 2: removed candidates {6} from cell [1, 8]
-17 *** hidden group of {3, 5} in block 2: removed candidates {6} from cell [0, 7]
-18 *** hidden group of {1, 6} in block 2: removed candidates {9} from cell [2, 8]
-19 *** hidden group of {8, 9} in row 2: removed candidates {6} from cell [2, 3]
-20 *** row 4: filled cell [4, 6] with value 1
-21 *** column 6: filled cell [8, 6] with value 7
-22 *** column 6: filled cell [5, 6] with value 8
-23 *** column 6: filled cell [0, 6] with value 9
-24 *** naked group of {1, 6} in column 8: removed candidates {1} from cell [7, 8]
-25 *** naked group of {3, 5} in column 7: removed candidates {3, 5} from cell [5, 7]
-26 *** lone single: filled cell [5, 7] with value 2
-27 *** lone single: filled cell [7, 8] with value 2
-28 *** naked group of {8, 6} in row 8: removed candidates {8} from cell [8, 4]
-29 *** naked group of {8, 6} in row 8: removed candidates {8} from cell [8, 5]
-30 *** pointing group of 2 in column 3 to block 1: removed candidate 2 from cell [0, 4]
-31 *** row 0: filled cell [0, 3] with value 2
-32 *** row 4: filled cell [4, 0] with value 2
-33 *** row 8: filled cell [8, 4] with value 2
-34 *** row 8: filled cell [8, 5] with value 9
-35 *** pointing group of 7 in column 3 to block 4: removed candidate 7 from cell [3, 4]
-36 *** pointing group of 7 in column 3 to block 4: removed candidate 7 from cell [4, 5]
  |0-----------|1-----------|2-----------|3-----------|4-----------|5-----------|6-----------|7-----------|8-----------|
 0| 4          |   1---56---|   1---5----| 2          |   --3---7--|   --3--67--| 9          |   --3-5----| 8          |
 1|   ----56-8-|   ----56-8-| 9          |   --3--6---| 1          | 4          | 2          | 7          |   --3-5----|
@@ -161,29 +195,31 @@ b.solve()
 
 ::: {.cell-output .cell-output-display}
 ```
-False
+'solution not found'
 ```
 :::
 :::
 
 
-::: {#cell-10 .cell}
+::: {#cell-16 .cell}
 ``` {.python .cell-code}
 b = Board(board)
-b.solve(True)
+res = b.solve(True, print_log = True)
+test_eq(res, Solution.ONE_SOLUTION)
+res.value
 ```
 
 ::: {.cell-output .cell-output-stdout}
 ```
-0 *** row 1: filled cell [1, 5] with value 4
-1 *** row 7: filled cell [7, 2] with value 4
-2 *** column 3: filled cell [8, 3] with value 5
-3 *** column 0: filled cell [2, 0] with value 7
-4 *** column 0: filled cell [7, 0] with value 9
-5 *** block 6: filled cell [8, 1] with value 3
+0 *** single candidate row 1: filled cell [1, 5] with value 4
+1 *** single candidate row 7: filled cell [7, 2] with value 4
+2 *** single candidate column 3: filled cell [8, 3] with value 5
+3 *** single candidate column 0: filled cell [2, 0] with value 7
+4 *** single candidate column 0: filled cell [7, 0] with value 9
+5 *** single candidate block 6: filled cell [8, 1] with value 3
 6 *** lone single: filled cell [1, 6] with value 2
-7 *** pointing group of 1 in block 0 to row 0: removed candidate 1 from cell [0, 6]
-8 *** pointing group of 1 in block 0 to row 0: removed candidate 1 from cell [0, 7]
+7 *** pointing group of 1 in block 0 to row 0: removed candidate 1 from cell [0, 7]
+8 *** pointing group of 1 in block 0 to row 0: removed candidate 1 from cell [0, 6]
 9 *** pointing group of 8 in block 0 to row 1: removed candidate 8 from cell [1, 3]
 10 *** pointing group of 1 in column 6 to block 5: removed candidate 1 from cell [4, 8]
 11 *** pointing group of 1 in column 6 to block 5: removed candidate 1 from cell [3, 8]
@@ -191,25 +227,25 @@ b.solve(True)
 13 *** pointing group of 1 in row 3 to block 3: removed candidate 1 from cell [4, 2]
 14 *** hidden group of {1, 5} in column 2: removed candidates {8} from cell [3, 2]
 15 *** hidden group of {1, 5} in column 2: removed candidates {6} from cell [0, 2]
-16 *** hidden group of {3, 5} in block 2: removed candidates {6} from cell [0, 7]
-17 *** hidden group of {3, 5} in block 2: removed candidates {6} from cell [1, 8]
+16 *** hidden group of {3, 5} in block 2: removed candidates {6} from cell [1, 8]
+17 *** hidden group of {3, 5} in block 2: removed candidates {6} from cell [0, 7]
 18 *** hidden group of {1, 6} in block 2: removed candidates {9} from cell [2, 8]
 19 *** hidden group of {8, 9} in row 2: removed candidates {6} from cell [2, 3]
-20 *** row 4: filled cell [4, 6] with value 1
-21 *** column 6: filled cell [8, 6] with value 7
-22 *** column 6: filled cell [5, 6] with value 8
-23 *** column 6: filled cell [0, 6] with value 9
+20 *** single candidate row 4: filled cell [4, 6] with value 1
+21 *** single candidate column 6: filled cell [8, 6] with value 7
+22 *** single candidate column 6: filled cell [5, 6] with value 8
+23 *** single candidate column 6: filled cell [0, 6] with value 9
 24 *** naked group of {1, 6} in column 8: removed candidates {1} from cell [7, 8]
 25 *** naked group of {3, 5} in column 7: removed candidates {3, 5} from cell [5, 7]
 26 *** lone single: filled cell [5, 7] with value 2
 27 *** lone single: filled cell [7, 8] with value 2
-28 *** naked group of {8, 6} in row 8: removed candidates {8} from cell [8, 4]
-29 *** naked group of {8, 6} in row 8: removed candidates {8} from cell [8, 5]
+28 *** naked group of {8, 6} in row 8: removed candidates {8} from cell [8, 5]
+29 *** naked group of {8, 6} in row 8: removed candidates {8} from cell [8, 4]
 30 *** pointing group of 2 in column 3 to block 1: removed candidate 2 from cell [0, 4]
-31 *** row 0: filled cell [0, 3] with value 2
-32 *** row 4: filled cell [4, 0] with value 2
-33 *** row 8: filled cell [8, 4] with value 2
-34 *** row 8: filled cell [8, 5] with value 9
+31 *** single candidate row 0: filled cell [0, 3] with value 2
+32 *** single candidate row 4: filled cell [4, 0] with value 2
+33 *** single candidate row 8: filled cell [8, 4] with value 2
+34 *** single candidate row 8: filled cell [8, 5] with value 9
 35 *** pointing group of 7 in column 3 to block 4: removed candidate 7 from cell [4, 5]
 36 *** pointing group of 7 in column 3 to block 4: removed candidate 7 from cell [3, 4]
 37 ****** trying brute force, removing candidate 1 from cell [0, 2]
@@ -258,18 +294,17 @@ b.solve(True)
 
 ::: {.cell-output .cell-output-display}
 ```
-True
+'found a solution'
 ```
 :::
 :::
 
 
-If I try to solve a puzzle which already contains an error, the solver fails:
+The solver detects a puzzle with no solutions
 
-::: {#cell-12 .cell}
+::: {#cell-18 .cell}
 ``` {.python .cell-code}
-# impossible
-impossible_board = ['4--4----8', 
+already_inconsistent_board = ['4--4----8', 
          '--9-1--7-', 
          '-23--54--', 
          '-----26--', 
@@ -278,15 +313,135 @@ impossible_board = ['4--4----8',
          '--24--39-', 
          '-7--6-5--', 
          '1-------4']
+b = Board(already_inconsistent_board)
+res = b.solve()
+test_eq(res, Solution.NO_SOLUTIONS)
+res.value
 ```
+
+::: {.cell-output .cell-output-display}
+```
+'no solutions'
+```
+:::
 :::
 
 
-::: {#cell-13 .cell}
+::: {#cell-19 .cell}
 ``` {.python .cell-code}
-b = Board(impossible_board)
-test_fail(b.solve)
+board_no_solutions = ['4-52--9-8', 
+         '--9-1427-', 
+         '723--54--', 
+         '-----26--', 
+         '29--5-14-', 
+         '--71--82-', 
+         '--24--39-', 
+         '974-6-5-2', 
+         '13-5297-4']
+b = Board(board_no_solutions)
+res = b.solve()
+test_eq(res, Solution.NO_SOLUTIONS)
+res.value
 ```
+
+::: {.cell-output .cell-output-display}
+```
+'no solutions'
+```
+:::
+:::
+
+
+Trying to solve a puzzle with more than one solution, the solver picks one of them (you'll need to use brute force)
+
+::: {#cell-21 .cell}
+``` {.python .cell-code}
+board_many_solutions = ['123456789', 
+         '---------', 
+         '---------', 
+         '---------', 
+         '---------', 
+         '---------', 
+         '---------', 
+         '---------', 
+         '---------']
+b = Board(board_many_solutions)
+res = b.solve(True)
+test_eq(res, Solution.ONE_SOLUTION)
+res.value
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+ |0--|1--|2--|3--|4--|5--|6--|7--|8--|
+0| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+1| 7 | 6 | 5 | 9 | 1 | 8 | 4 | 3 | 2 |
+2| 4 | 9 | 8 | 7 | 3 | 2 | 6 | 5 | 1 |
+3| 6 | 1 | 7 | 2 | 4 | 5 | 8 | 9 | 3 |
+4| 5 | 8 | 4 | 1 | 9 | 3 | 2 | 6 | 7 |
+5| 9 | 3 | 2 | 6 | 8 | 7 | 5 | 1 | 4 |
+6| 3 | 7 | 9 | 5 | 6 | 4 | 1 | 2 | 8 |
+7| 2 | 5 | 1 | 8 | 7 | 9 | 3 | 4 | 6 |
+8| 8 | 4 | 6 | 3 | 2 | 1 | 9 | 7 | 5 |
+ |0--|1--|2--|3--|4--|5--|6--|7--|8--|
+
+```
+:::
+
+::: {.cell-output .cell-output-display}
+```
+'found a solution'
+```
+:::
+:::
+
+
+However, you can check the existence of more than one solution
+
+::: {#cell-23 .cell}
+``` {.python .cell-code}
+b = Board(board_many_solutions)
+res = b.solve(True, print_log=True, check_many_solutions=True)
+test_eq(res, Solution.MULTIPLE_SOLUTIONS)
+res.value
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+0 ****** trying brute force, removing candidate 4 from cell [1, 0]
+1 ****** Before brute force:
+ |0-----------|1-----------|2-----------|3-----------|4-----------|5-----------|6-----------|7-----------|8-----------|
+0| 1          | 2          | 3          | 4          | 5          | 6          | 7          | 8          | 9          |
+1|   ----56789|   ---456789|   ---456789|   123---789|   123---789|   123---789|   123456---|   123456---|   123456---|
+2|   ---456789|   ---456789|   ---456789|   123---789|   123---789|   123---789|   123456---|   123456---|   123456---|
+3|   -23456789|   1-3456789|   12-456789|   123-56789|   1234-6789|   12345-789|   123456-89|   1234567-9|   12345678-|
+4|   -23456789|   1-3456789|   12-456789|   123-56789|   1234-6789|   12345-789|   123456-89|   1234567-9|   12345678-|
+5|   -23456789|   1-3456789|   12-456789|   123-56789|   1234-6789|   12345-789|   123456-89|   1234567-9|   12345678-|
+6|   -23456789|   1-3456789|   12-456789|   123-56789|   1234-6789|   12345-789|   123456-89|   1234567-9|   12345678-|
+7|   -23456789|   1-3456789|   12-456789|   123-56789|   1234-6789|   12345-789|   123456-89|   1234567-9|   12345678-|
+8|   -23456789|   1-3456789|   12-456789|   123-56789|   1234-6789|   12345-789|   123456-89|   1234567-9|   12345678-|
+ |0-----------|1-----------|2-----------|3-----------|4-----------|5-----------|6-----------|7-----------|8-----------|
+
+ |0-----------|1-----------|2-----------|3-----------|4-----------|5-----------|6-----------|7-----------|8-----------|
+0| 1          | 2          | 3          | 4          | 5          | 6          | 7          | 8          | 9          |
+1|   ---456789|   ---456789|   ---456789|   123---789|   123---789|   123---789|   123456---|   123456---|   123456---|
+2|   ---456789|   ---456789|   ---456789|   123---789|   123---789|   123---789|   123456---|   123456---|   123456---|
+3|   -23456789|   1-3456789|   12-456789|   123-56789|   1234-6789|   12345-789|   123456-89|   1234567-9|   12345678-|
+4|   -23456789|   1-3456789|   12-456789|   123-56789|   1234-6789|   12345-789|   123456-89|   1234567-9|   12345678-|
+5|   -23456789|   1-3456789|   12-456789|   123-56789|   1234-6789|   12345-789|   123456-89|   1234567-9|   12345678-|
+6|   -23456789|   1-3456789|   12-456789|   123-56789|   1234-6789|   12345-789|   123456-89|   1234567-9|   12345678-|
+7|   -23456789|   1-3456789|   12-456789|   123-56789|   1234-6789|   12345-789|   123456-89|   1234567-9|   12345678-|
+8|   -23456789|   1-3456789|   12-456789|   123-56789|   1234-6789|   12345-789|   123456-89|   1234567-9|   12345678-|
+ |0-----------|1-----------|2-----------|3-----------|4-----------|5-----------|6-----------|7-----------|8-----------|
+
+```
+:::
+
+::: {.cell-output .cell-output-display}
+```
+'multiple solutions'
+```
+:::
 :::
 
 

@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Sudoku solver">
+<meta name="description" content="Class for Sudoku cell">
 
-<title>sudoku</title>
+<title>cell – sudoku</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -107,11 +72,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="sudoku">
-<meta property="og:description" content="Sudoku solver">
+<meta property="og:title" content="cell – sudoku">
+<meta property="og:description" content="Class for Sudoku cell">
 <meta property="og:site_name" content="sudoku">
-<meta name="twitter:title" content="sudoku">
-<meta name="twitter:description" content="Sudoku solver">
+<meta name="twitter:title" content="cell – sudoku">
+<meta name="twitter:description" content="Class for Sudoku cell">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -136,7 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">sudoku</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cell.html">cell</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -150,13 +115,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">sudoku</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cell.html" class="sidebar-item-text sidebar-link">
+  <a href="./cell.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">cell</span></a>
   </div>
 </li>
@@ -182,30 +147,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#developer-guide" id="toc-developer-guide" class="nav-link active" data-scroll-target="#developer-guide">Developer Guide</a>
-  <ul class="collapse">
-  <li><a href="#install-sudoku-in-development-mode" id="toc-install-sudoku-in-development-mode" class="nav-link" data-scroll-target="#install-sudoku-in-development-mode">Install sudoku in Development mode</a></li>
-  </ul></li>
-  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a>
-  <ul class="collapse">
-  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
-  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
-  </ul></li>
-  <li><a href="#how-to-use" id="toc-how-to-use" class="nav-link" data-scroll-target="#how-to-use">How to use</a></li>
+  <li><a href="#cell" id="toc-cell" class="nav-link active" data-scroll-target="#cell">Cell</a></li>
+  <li><a href="#house" id="toc-house" class="nav-link" data-scroll-target="#house">House</a></li>
+  <li><a href="#cell.show" id="toc-cell.show" class="nav-link" data-scroll-target="#cell.show">Cell.show</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/emagri/sudoku/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.html.md"><i class="bi bi-file-code"></i>CommonMark</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/emagri/sudoku/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cell.html.md"><i class="bi bi-file-code"></i>CommonMark</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">sudoku</h1>
+<h1 class="title">cell</h1>
 </div>
 
 <div>
   <div class="description">
-    Sudoku solver
+    Class for Sudoku cell
   </div>
 </div>
 
@@ -223,95 +181,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
-<section id="developer-guide" class="level2">
-<h2 class="anchored" data-anchor-id="developer-guide">Developer Guide</h2>
-<p>If you are new to using <code>nbdev</code> here are some useful pointers to get you started.</p>
-<section id="install-sudoku-in-development-mode" class="level3">
-<h3 class="anchored" data-anchor-id="install-sudoku-in-development-mode">Install sudoku in Development mode</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure sudoku package is installed in development mode</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install <span class="at">-e</span> .</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># make changes under nbs/ directory</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># compile to have changes apply to sudoku</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nbdev_prepare</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+<p><a href="https://github.com/emagri/sudoku/blob/main/sudoku/cell.py#L18" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="cell" class="level3">
+<h3 class="anchored" data-anchor-id="cell">Cell</h3>
+<blockquote class="blockquote">
+<pre><code> Cell (row, col, value=None)</code></pre>
+</blockquote>
+<p><em>Cell of Sudoku board</em></p>
+<hr>
+<p><a href="https://github.com/emagri/sudoku/blob/main/sudoku/cell.py#L13" target="_blank" style="float:right; font-size:smaller">source</a></p>
 </section>
+<section id="house" class="level3">
+<h3 class="anchored" data-anchor-id="house">House</h3>
+<blockquote class="blockquote">
+<pre><code> House (*values)</code></pre>
+</blockquote>
+<p>*Create a collection of name/value pairs.</p>
+<p>Example enumeration:</p>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>class Color(Enum): … RED = 1 … BLUE = 2 … GREEN = 3</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Access them by:</p>
+<ul>
+<li><p>attribute access:</p>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>Color.RED &lt;Color.RED: 1&gt;</p>
+</blockquote>
+</blockquote>
+</blockquote></li>
+<li><p>value lookup:</p>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>Color(1) &lt;Color.RED: 1&gt;</p>
+</blockquote>
+</blockquote>
+</blockquote></li>
+<li><p>name lookup:</p>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>Color[‘RED’] &lt;Color.RED: 1&gt;</p>
+</blockquote>
+</blockquote>
+</blockquote></li>
+</ul>
+<p>Enumerations can be iterated over, and know how many members they have:</p>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>len(Color) 3</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>list(Color) [&lt;Color.RED: 1&gt;, &lt;Color.BLUE: 2&gt;, &lt;Color.GREEN: 3&gt;]</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Methods can be added to enumerations, and members can have their own attributes – see the documentation for details.*</p>
+<hr>
+<p><a href="https://github.com/emagri/sudoku/blob/main/sudoku/cell.py#L27" target="_blank" style="float:right; font-size:smaller">source</a></p>
 </section>
-<section id="usage" class="level2">
-<h2 class="anchored" data-anchor-id="usage">Usage</h2>
-<section id="installation" class="level3">
-<h3 class="anchored" data-anchor-id="installation">Installation</h3>
-<p>Install latest from the GitHub <a href="https://github.com/emagri/sudoku">repository</a>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install git+https://github.com/emagri/sudoku.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>or from <a href="https://anaconda.org/emagri/sudoku">conda</a></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> conda install <span class="at">-c</span> emagri sudoku</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>or from <a href="https://pypi.org/project/sudoku/">pypi</a></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install sudoku</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="documentation" class="level3">
-<h3 class="anchored" data-anchor-id="documentation">Documentation</h3>
-<p>Documentation can be found hosted on this GitHub <a href="https://github.com/emagri/sudoku">repository</a>’s <a href="https://emagri.github.io/sudoku/">pages</a>. Additionally you can find package manager specific guidelines on <a href="https://anaconda.org/emagri/sudoku">conda</a> and <a href="https://pypi.org/project/sudoku/">pypi</a> respectively.</p>
-</section>
-</section>
-<section id="how-to-use" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-use">How to use</h2>
-<p>Instantiate a <a href="https://emagri.github.io/sudoku/board.html#board"><code>sudoku.board.Board</code></a> class, passing it a list of 9 rows containing the initial Sudoku puzzle.</p>
-<div id="cell-13" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>board <span class="op">=</span> [<span class="st">'8-----41-'</span>, </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>         <span class="st">'-6-9-----'</span>, </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>         <span class="st">'3-2------'</span>, </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">'-5---814-'</span>, </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">'4----1--3'</span>, </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>         <span class="st">'-8---326-'</span>, </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>         <span class="st">'1-9------'</span>, </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>         <span class="st">'-7-3-----'</span>, </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>         <span class="st">'2-----85-'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Invoking its method <code>solve</code>, you can get a log of the processing and the final result.</p>
-<div id="cell-15" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> Board(board)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>b.solve(<span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> |0-----------|1-----------|2-----------|3-----------|4-----------|5-----------|6-----------|7-----------|8-----------|
-0| 8          | 9          | 5          |   -2---6---| 3          | 7          | 4          | 1          |   -2---6---|
-1| 7          | 6          | 4          | 9          | 1          |   -2--5----|   --3-5----|   -23------| 8          |
-2| 3          | 1          | 2          |   ---456-8-|   ---456-8-|   ---456---|   ----567-9|   ------7-9|   ----5---9|
-3| 6          | 5          | 3          |   -2----7--|   -2------9| 8          | 1          | 4          |   ------7-9|
-4| 4          | 2          | 7          |   ----56---|   ----56--9| 1          |   ----5---9| 8          | 3          |
-5| 9          | 8          | 1          |   ---45-7--|   ---45----| 3          | 2          | 6          |   ----5-7--|
-6| 1          | 4          | 9          |   -2--56-8-|   -2--56-8-|   -2--56---|   --3---7--|   --3---7--|   -2---6---|
-7| 5          | 7          | 8          | 3          |   -2-4-6---|   -2-4-6---|   -----6--9|   -2------9| 1          |
-8| 2          | 3          | 6          | 1          | 7          | 9          | 8          | 5          | 4          |
- |0-----------|1-----------|2-----------|3-----------|4-----------|5-----------|6-----------|7-----------|8-----------|
-</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;Solution.NOT_FOUND: 'solution not found'&gt;</code></pre>
-</div>
-</div>
-<p>The parameter <code>use_brute_force</code> (disabled by default) enables the use of brute force in case attemps based on logic are not enough to solve the puzzle.</p>
-<div id="cell-17" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> Board(board)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>b.solve(<span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> |0--|1--|2--|3--|4--|5--|6--|7--|8--|
-0| 8 | 9 | 5 | 2 | 3 | 7 | 4 | 1 | 6 |
-1| 7 | 6 | 4 | 9 | 1 | 5 | 3 | 2 | 8 |
-2| 3 | 1 | 2 | 8 | 6 | 4 | 9 | 7 | 5 |
-3| 6 | 5 | 3 | 7 | 2 | 8 | 1 | 4 | 9 |
-4| 4 | 2 | 7 | 6 | 9 | 1 | 5 | 8 | 3 |
-5| 9 | 8 | 1 | 4 | 5 | 3 | 2 | 6 | 7 |
-6| 1 | 4 | 9 | 5 | 8 | 6 | 7 | 3 | 2 |
-7| 5 | 7 | 8 | 3 | 4 | 2 | 6 | 9 | 1 |
-8| 2 | 3 | 6 | 1 | 7 | 9 | 8 | 5 | 4 |
- |0--|1--|2--|3--|4--|5--|6--|7--|8--|
-</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;Solution.ONE_SOLUTION: 'found a solution'&gt;</code></pre>
-</div>
-</div>
+<section id="cell.show" class="level3">
+<h3 class="anchored" data-anchor-id="cell.show">Cell.show</h3>
+<blockquote class="blockquote">
+<pre><code> Cell.show (with_candidates)</code></pre>
+</blockquote>
+<p><em>Show textual representation of the cell</em></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>with_candidates</td>
+<td>also show candidate values</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>

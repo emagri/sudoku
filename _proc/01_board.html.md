@@ -11,7 +11,53 @@ title: board
 
 ---
 
-[source](https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L15){target="_blank" style="float:right; font-size:smaller"}
+[source](https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L16){target="_blank" style="float:right; font-size:smaller"}
+
+### Solution
+
+>      Solution (*values)
+
+*Create a collection of name/value pairs.
+
+Example enumeration:
+
+>>> class Color(Enum):
+...     RED = 1
+...     BLUE = 2
+...     GREEN = 3
+
+Access them by:
+
+- attribute access:
+
+  >>> Color.RED
+  <Color.RED: 1>
+
+- value lookup:
+
+  >>> Color(1)
+  <Color.RED: 1>
+
+- name lookup:
+
+  >>> Color['RED']
+  <Color.RED: 1>
+
+Enumerations can be iterated over, and know how many members they have:
+
+>>> len(Color)
+3
+
+>>> list(Color)
+[<Color.RED: 1>, <Color.BLUE: 2>, <Color.GREEN: 3>]
+
+Methods can be added to enumerations, and members can have their own
+attributes -- see the documentation for details.*
+
+
+---
+
+[source](https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L24){target="_blank" style="float:right; font-size:smaller"}
 
 ### Board
 
@@ -26,18 +72,21 @@ title: board
 
 ---
 
-[source](https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L284){target="_blank" style="float:right; font-size:smaller"}
+[source](https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L269){target="_blank" style="float:right; font-size:smaller"}
 
 ### Board.solve
 
->      Board.solve (use_brute_force=False, print_results=True)
+>      Board.solve (use_brute_force=False, print_log=False, print_results=True,
+>                   check_many_solutions=False)
 
 *Tries to solve the board given its current state*
 
 |    | **Type** | **Default** | **Details** |
 | -- | -------- | ----------- | ----------- |
 | use_brute_force | bool | False | if methods based on logic fail, solve the puzzle traying all values for the remaining cells |
-| print_results | bool | True | print logs and final board |
-
+| print_log | bool | False | print logs |
+| print_results | bool | True | print final board |
+| check_many_solutions | bool | False | do not stop after first solution; if more than one solution exist, report it |
+| **Returns** | **Solution** |  |  |
 
 
