@@ -26,7 +26,7 @@ title: board
 
 ---
 
-[source](https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L282){target="_blank" style="float:right; font-size:smaller"}
+[source](https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L284){target="_blank" style="float:right; font-size:smaller"}
 
 ### Board.solve
 

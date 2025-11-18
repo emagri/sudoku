@@ -22,6 +22,8 @@ class Cell:
         self.col = col
         self._value = value
         self.candidates = set() if self._value != None else ALL.copy()
+    def __str__(self): return self.show(False)
+    __repr__ = __str__
     def show(self, 
              with_candidates): # also show candidate values
         "Show textual representation of the cell"

@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Class for Sudoku board">
+<meta name="description" content="Class for Sudoku board. Implements import and export, rendering and solving of a Sudoku puzzle">
 
 <title>board – sudoku</title>
 <style>
@@ -73,10 +73,10 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="board – sudoku">
-<meta property="og:description" content="Class for Sudoku board">
+<meta property="og:description" content="Class for Sudoku board. Implements import and export, rendering and solving of a Sudoku puzzle">
 <meta property="og:site_name" content="sudoku">
 <meta name="twitter:title" content="board – sudoku">
-<meta name="twitter:description" content="Class for Sudoku board">
+<meta name="twitter:description" content="Class for Sudoku board. Implements import and export, rendering and solving of a Sudoku puzzle">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -148,6 +148,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#board" id="toc-board" class="nav-link active" data-scroll-target="#board">Board</a></li>
+  <li><a href="#board.solve" id="toc-board.solve" class="nav-link" data-scroll-target="#board.solve">Board.solve</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/emagri/sudoku/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="board.html.md"><i class="bi bi-file-code"></i>CommonMark</a></li></ul></div></nav>
     </div>
@@ -161,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    Class for Sudoku board
+    Class for Sudoku board. Implements import and export, rendering and solving of a Sudoku puzzle
   </div>
 </div>
 
@@ -186,7 +187,60 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <pre><code> Board (initial_cells)</code></pre>
 </blockquote>
-<p><em>Initialize self. See help(type(self)) for accurate signature.</em></p>
+<p><em>Initializes the board given the initial cell state</em></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>initial_cells</td>
+<td>initial cell state</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L284" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="board.solve" class="level3">
+<h3 class="anchored" data-anchor-id="board.solve">Board.solve</h3>
+<blockquote class="blockquote">
+<pre><code> Board.solve (use_brute_force=False, print_results=True)</code></pre>
+</blockquote>
+<p><em>Tries to solve the board given its current state</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>use_brute_force</td>
+<td>bool</td>
+<td>False</td>
+<td>if methods based on logic fail, solve the puzzle traying all values for the remaining cells</td>
+</tr>
+<tr class="even">
+<td>print_results</td>
+<td>bool</td>
+<td>True</td>
+<td>print logs and final board</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>

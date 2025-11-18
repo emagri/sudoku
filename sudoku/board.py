@@ -20,6 +20,8 @@ class Board:
         self.load_initial_cells(initial_cells)
     def __getitem__(self, key):
         return self.cells[key]
+    def __str__(self): return self.show(False)
+    __repr__ = __str__
     def show(self, with_candidates=True):
         res = ""
         for r in range(-1, 10):

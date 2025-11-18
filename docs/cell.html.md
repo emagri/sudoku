@@ -12,7 +12,7 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 >  Cell (row, col, value=None)
 
-*Initialize self. See help(type(self)) for accurate signature.*
+*Cell of Sudoku board*
 
 ------------------------------------------------------------------------
 
@@ -52,3 +52,29 @@ Enumerations can be iterated over, and know how many members they have:
 
 Methods can be added to enumerations, and members can have their own
 attributes – see the documentation for details.\*
+
+------------------------------------------------------------------------
+
+<a href="https://github.com/emagri/sudoku/blob/main/sudoku/cell.py#L27"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### Cell.show
+
+>  Cell.show (with_candidates)
+
+*Show textual representation of the cell*
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>with_candidates</td>
+<td>also show candidate values</td>
+</tr>
+</tbody>
+</table>

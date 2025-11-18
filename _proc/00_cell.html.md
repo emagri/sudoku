@@ -67,7 +67,7 @@ attributes -- see the documentation for details.*
 
 ---
 
-[source](https://github.com/emagri/sudoku/blob/main/sudoku/cell.py#L25){target="_blank" style="float:right; font-size:smaller"}
+[source](https://github.com/emagri/sudoku/blob/main/sudoku/cell.py#L27){target="_blank" style="float:right; font-size:smaller"}
 
 ### Cell.show
 

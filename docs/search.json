@@ -44,9 +44,19 @@
     "href": "cell.html",
     "title": "cell",
     "section": "",
-    "text": "source\n\nCell\n\n Cell (row, col, value=None)\n\nInitialize self. See help(type(self)) for accurate signature.\n\nsource\n\n\nHouse\n\n House (*values)\n\n*Create a collection of name/value pairs.\nExample enumeration:\n\n\n\nclass Color(Enum): … RED = 1 … BLUE = 2 … GREEN = 3\n\n\n\nAccess them by:\n\nattribute access:\n\n\n\nColor.RED &lt;Color.RED: 1&gt;\n\n\n\nvalue lookup:\n\n\n\nColor(1) &lt;Color.RED: 1&gt;\n\n\n\nname lookup:\n\n\n\nColor[‘RED’] &lt;Color.RED: 1&gt;\n\n\n\n\nEnumerations can be iterated over, and know how many members they have:\n\n\n\nlen(Color) 3\n\n\n\n\n\n\nlist(Color) [&lt;Color.RED: 1&gt;, &lt;Color.BLUE: 2&gt;, &lt;Color.GREEN: 3&gt;]\n\n\n\nMethods can be added to enumerations, and members can have their own attributes – see the documentation for details.*",
+    "text": "source\n\nCell\n\n Cell (row, col, value=None)\n\nCell of Sudoku board\n\nsource\n\n\nHouse\n\n House (*values)\n\n*Create a collection of name/value pairs.\nExample enumeration:\n\n\n\nclass Color(Enum): … RED = 1 … BLUE = 2 … GREEN = 3\n\n\n\nAccess them by:\n\nattribute access:\n\n\n\nColor.RED &lt;Color.RED: 1&gt;\n\n\n\nvalue lookup:\n\n\n\nColor(1) &lt;Color.RED: 1&gt;\n\n\n\nname lookup:\n\n\n\nColor[‘RED’] &lt;Color.RED: 1&gt;\n\n\n\n\nEnumerations can be iterated over, and know how many members they have:\n\n\n\nlen(Color) 3\n\n\n\n\n\n\nlist(Color) [&lt;Color.RED: 1&gt;, &lt;Color.BLUE: 2&gt;, &lt;Color.GREEN: 3&gt;]\n\n\n\nMethods can be added to enumerations, and members can have their own attributes – see the documentation for details.*\n\nsource\n\n\nCell.show\n\n Cell.show (with_candidates)\n\nShow textual representation of the cell\n\n\n\n\nDetails\n\n\n\n\nwith_candidates\nalso show candidate values",
     "crumbs": [
       "cell"
+    ]
+  },
+  {
+    "objectID": "main.html",
+    "href": "main.html",
+    "title": "main",
+    "section": "",
+    "text": "import numpy as np\nimport time\n\nfrom sudoku.cell import *\nfrom sudoku.board import Board\n\n\n# medium\nboard = ['5-------6', \n         '-816---5-', \n         '--2-5-14-', \n         '----7--3-', \n         '--71-69--',\n         '-1--3----', \n         '-26-4-7--', \n         '-5---249-', \n         '8-------2']\n\n\n# hard\nboard = ['----5163-', \n         '----94---', \n         '--3-6--94', \n         '6-7------', \n         '-386--5--', \n         '9-1------', \n         '--6-1--57', \n         '----26---', \n         '----3786-']\n\n\n# very hard 1\nboard = ['8-----41-', \n         '-6-9-----', \n         '3-2------', \n         '-5---814-', \n         '4----1--3', \n         '-8---326-', \n         '1-9------', \n         '-7-3-----', \n         '2-----85-']\n\n\n# very hard 2\nboard = ['4-------8', \n         '--9-1--7-', \n         '-23--54--', \n         '-----26--', \n         '-9--5--4-', \n         '--71-----', \n         '--24--39-', \n         '-7--6-5--', \n         '1-------4']\n\nA board can be exported, generating a line of text which can be imported in external sites, like Sudoku solutions\n\nb = Board(board)\nb.export()\n\n\nb = Board(board)\nb.solve()\n\n\nb = Board(board)\nb.solve(True)\n\nIf I try to solve a puzzle which already contains an error, the solver fails:\n\n# impossible\nimpossible_board = ['4--4----8', \n         '--9-1--7-', \n         '-23--54--', \n         '-----26--', \n         '-9--5--4-', \n         '--71-----', \n         '--24--39-', \n         '-7--6-5--', \n         '1-------4']\n\n\nb = Board(impossible_board)\ntest_fail(b.solve)",
+    "crumbs": [
+      "main"
     ]
   },
   {
@@ -54,7 +64,7 @@
     "href": "board.html",
     "title": "board",
     "section": "",
-    "text": "source\n\nBoard\n\n Board (initial_cells)\n\nInitialize self. See help(type(self)) for accurate signature.",
+    "text": "source\n\nBoard\n\n Board (initial_cells)\n\nInitializes the board given the initial cell state\n\n\n\n\nDetails\n\n\n\n\ninitial_cells\ninitial cell state\n\n\n\n\nsource\n\n\nBoard.solve\n\n Board.solve (use_brute_force=False, print_results=True)\n\nTries to solve the board given its current state\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nuse_brute_force\nbool\nFalse\nif methods based on logic fail, solve the puzzle traying all values for the remaining cells\n\n\nprint_results\nbool\nTrue\nprint logs and final board",
     "crumbs": [
       "board"
     ]
