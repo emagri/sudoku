@@ -1,7 +1,0 @@
-website:
-  sidebar:
-    contents:
-      - index.ipynb
-      - 00_cell.ipynb
-      - 01_board.ipynb
-      - 02_main.ipynb

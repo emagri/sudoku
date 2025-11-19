@@ -2,7 +2,7 @@ project:
   output-dir: docs
 
 website:
-  title: "sudoku"
+  title: "sudoku-board-solver-em"
   site-url: "https://emagri.github.io/sudoku"
   description: "Sudoku solver"
   repo-branch: main

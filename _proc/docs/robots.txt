@@ -1,1 +1,0 @@
-Sitemap: https://emagri.github.io/sudoku/sitemap.xml
