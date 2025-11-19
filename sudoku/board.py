@@ -14,6 +14,7 @@ from .cell import House, Cell
 
 # %% ../nbs/01_board.ipynb 4
 class Solution(Enum):
+    "Result of puzzle solution by solver"
     NOT_FOUND = "solution not found"
     NO_SOLUTIONS = "no solutions"
     ONE_SOLUTION = "found a solution"
@@ -31,7 +32,9 @@ class Board:
         return self.cells[key]
     def __str__(self): return self.show(False)
     __repr__ = __str__
-    def show(self, with_candidates=True):
+    def show(self, 
+             with_candidates=True): # also shows candidate values for cells
+        "Gives a textual representation of the actual state of the board"
         res = ""
         for r in range(-1, 10):
             for c in range(9):

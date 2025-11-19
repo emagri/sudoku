@@ -149,6 +149,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#solution" id="toc-solution" class="nav-link active" data-scroll-target="#solution">Solution</a></li>
   <li><a href="#board" id="toc-board" class="nav-link" data-scroll-target="#board">Board</a></li>
+  <li><a href="#board.show" id="toc-board.show" class="nav-link" data-scroll-target="#board.show">Board.show</a></li>
   <li><a href="#board.solve" id="toc-board.solve" class="nav-link" data-scroll-target="#board.solve">Board.solve</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/emagri/sudoku/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="board.html.md"><i class="bi bi-file-code"></i>CommonMark</a></li></ul></div></nav>
@@ -188,60 +189,9 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <pre><code> Solution (*values)</code></pre>
 </blockquote>
-<p>*Create a collection of name/value pairs.</p>
-<p>Example enumeration:</p>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>class Color(Enum): … RED = 1 … BLUE = 2 … GREEN = 3</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>Access them by:</p>
-<ul>
-<li><p>attribute access:</p>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>Color.RED &lt;Color.RED: 1&gt;</p>
-</blockquote>
-</blockquote>
-</blockquote></li>
-<li><p>value lookup:</p>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>Color(1) &lt;Color.RED: 1&gt;</p>
-</blockquote>
-</blockquote>
-</blockquote></li>
-<li><p>name lookup:</p>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>Color[‘RED’] &lt;Color.RED: 1&gt;</p>
-</blockquote>
-</blockquote>
-</blockquote></li>
-</ul>
-<p>Enumerations can be iterated over, and know how many members they have:</p>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>len(Color) 3</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>list(Color) [&lt;Color.RED: 1&gt;, &lt;Color.BLUE: 2&gt;, &lt;Color.GREEN: 3&gt;]</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>Methods can be added to enumerations, and members can have their own attributes – see the documentation for details.*</p>
+<p><em>Result of puzzle solution by solver</em></p>
 <hr>
-<p><a href="https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L24" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<p><a href="https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L25" target="_blank" style="float:right; font-size:smaller">source</a></p>
 </section>
 <section id="board" class="level3">
 <h3 class="anchored" data-anchor-id="board">Board</h3>
@@ -264,7 +214,40 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <hr>
-<p><a href="https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L269" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<p><a href="https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L35" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="board.show" class="level3">
+<h3 class="anchored" data-anchor-id="board.show">Board.show</h3>
+<blockquote class="blockquote">
+<pre><code> Board.show (with_candidates=True)</code></pre>
+</blockquote>
+<p><em>Gives a textual representation of the actual state of the board</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>with_candidates</td>
+<td>bool</td>
+<td>True</td>
+<td>also shows candidate values for cells</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L272" target="_blank" style="float:right; font-size:smaller">source</a></p>
 </section>
 <section id="board.solve" class="level3">
 <h3 class="anchored" data-anchor-id="board.solve">Board.solve</h3>

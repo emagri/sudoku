@@ -5,7 +5,7 @@
 
 ------------------------------------------------------------------------
 
-<a href="https://github.com/emagri/sudoku/blob/main/sudoku/cell.py#L18"
+<a href="https://github.com/emagri/sudoku/blob/main/sudoku/cell.py#L19"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Cell
@@ -13,6 +13,37 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 >  Cell (row, col, value=None)
 
 *Cell of Sudoku board*
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>row</td>
+<td></td>
+<td></td>
+<td>row (0-based)</td>
+</tr>
+<tr>
+<td>col</td>
+<td></td>
+<td></td>
+<td>column (0-based)</td>
+</tr>
+<tr>
+<td>value</td>
+<td>NoneType</td>
+<td>None</td>
+<td>initial value</td>
+</tr>
+</tbody>
+</table>
 
 ------------------------------------------------------------------------
 
@@ -23,39 +54,11 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 >  House (*values)
 
-\*Create a collection of name/value pairs.
-
-Example enumeration:
-
-> > > class Color(Enum): … RED = 1 … BLUE = 2 … GREEN = 3
-
-Access them by:
-
-- attribute access:
-
-  > > > Color.RED \<Color.RED: 1\>
-
-- value lookup:
-
-  > > > Color(1) \<Color.RED: 1\>
-
-- name lookup:
-
-  > > > Color\[‘RED’\] \<Color.RED: 1\>
-
-Enumerations can be iterated over, and know how many members they have:
-
-> > > len(Color) 3
-
-> > > list(Color) \[\<Color.RED: 1\>, \<Color.BLUE: 2\>, \<Color.GREEN:
-> > > 3\>\]
-
-Methods can be added to enumerations, and members can have their own
-attributes – see the documentation for details.\*
+*Type of house for cells: row, column, 3x3 block*
 
 ------------------------------------------------------------------------
 
-<a href="https://github.com/emagri/sudoku/blob/main/sudoku/cell.py#L27"
+<a href="https://github.com/emagri/sudoku/blob/main/sudoku/cell.py#L32"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Cell.show

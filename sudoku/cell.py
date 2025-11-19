@@ -11,13 +11,18 @@ from enum import Enum
 ALL = {1,2,3,4,5,6,7,8,9}
 
 class House(Enum):
-    ROW = "row"
-    COLUMN = "column"
-    BLOCK = "block"
+    "Type of house for cells: row, column, 3x3 block"
+    ROW = "row" # row
+    COLUMN = "column" # column
+    BLOCK = "block" # block
     
 class Cell:
     "Cell of Sudoku board"
-    def __init__(self, row, col, value=None):
+    def __init__(self, 
+                 row, # row (0-based)
+                 col, # column (0-based)
+                 value=None): # initial value
+        "Initializes the cell"
         self.row = row
         self.col = col
         self._value = value

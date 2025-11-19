@@ -12,39 +12,11 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 >  Solution (*values)
 
-\*Create a collection of name/value pairs.
-
-Example enumeration:
-
-> > > class Color(Enum): … RED = 1 … BLUE = 2 … GREEN = 3
-
-Access them by:
-
-- attribute access:
-
-  > > > Color.RED \<Color.RED: 1\>
-
-- value lookup:
-
-  > > > Color(1) \<Color.RED: 1\>
-
-- name lookup:
-
-  > > > Color\[‘RED’\] \<Color.RED: 1\>
-
-Enumerations can be iterated over, and know how many members they have:
-
-> > > len(Color) 3
-
-> > > list(Color) \[\<Color.RED: 1\>, \<Color.BLUE: 2\>, \<Color.GREEN:
-> > > 3\>\]
-
-Methods can be added to enumerations, and members can have their own
-attributes – see the documentation for details.\*
+*Result of puzzle solution by solver*
 
 ------------------------------------------------------------------------
 
-<a href="https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L24"
+<a href="https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L25"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Board
@@ -70,8 +42,44 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ------------------------------------------------------------------------
 
+<a href="https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L35"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### Board.show
+
+>  Board.show (with_candidates=True)
+
+*Gives a textual representation of the actual state of the board*
+
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 25%" />
+<col style="width: 34%" />
+<col style="width: 34%" />
+</colgroup>
+<thead>
+<tr>
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>with_candidates</td>
+<td>bool</td>
+<td>True</td>
+<td>also shows candidate values for cells</td>
+</tr>
+</tbody>
+</table>
+
+------------------------------------------------------------------------
+
 <a
-href="https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L269"
+href="https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L272"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Board.solve

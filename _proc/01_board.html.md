@@ -17,47 +17,12 @@ title: board
 
 >      Solution (*values)
 
-*Create a collection of name/value pairs.
-
-Example enumeration:
-
->>> class Color(Enum):
-...     RED = 1
-...     BLUE = 2
-...     GREEN = 3
-
-Access them by:
-
-- attribute access:
-
-  >>> Color.RED
-  <Color.RED: 1>
-
-- value lookup:
-
-  >>> Color(1)
-  <Color.RED: 1>
-
-- name lookup:
-
-  >>> Color['RED']
-  <Color.RED: 1>
-
-Enumerations can be iterated over, and know how many members they have:
-
->>> len(Color)
-3
-
->>> list(Color)
-[<Color.RED: 1>, <Color.BLUE: 2>, <Color.GREEN: 3>]
-
-Methods can be added to enumerations, and members can have their own
-attributes -- see the documentation for details.*
+*Result of puzzle solution by solver*
 
 
 ---
 
-[source](https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L24){target="_blank" style="float:right; font-size:smaller"}
+[source](https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L25){target="_blank" style="float:right; font-size:smaller"}
 
 ### Board
 
@@ -72,7 +37,22 @@ attributes -- see the documentation for details.*
 
 ---
 
-[source](https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L269){target="_blank" style="float:right; font-size:smaller"}
+[source](https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L35){target="_blank" style="float:right; font-size:smaller"}
+
+### Board.show
+
+>      Board.show (with_candidates=True)
+
+*Gives a textual representation of the actual state of the board*
+
+|    | **Type** | **Default** | **Details** |
+| -- | -------- | ----------- | ----------- |
+| with_candidates | bool | True | also shows candidate values for cells |
+
+
+---
+
+[source](https://github.com/emagri/sudoku/blob/main/sudoku/board.py#L272){target="_blank" style="float:right; font-size:smaller"}
 
 ### Board.solve
 

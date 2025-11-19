@@ -32,16 +32,10 @@ Install latest from the GitHub
 $ pip install git+https://github.com/emagri/sudoku.git
 ```
 
-or from [conda](https://anaconda.org/emagri/sudoku)
+or from [pypi](https://pypi.org/project/sudoku-board-solver-em/)
 
 ``` sh
-$ conda install -c emagri sudoku
-```
-
-or from [pypi](https://pypi.org/project/sudoku/)
-
-``` sh
-$ pip install sudoku
+$ pip install sudoku-board-solver-em
 ```
 
 ### Documentation
@@ -56,8 +50,8 @@ package manager specific guidelines on
 ## How to use
 
 Instantiate a
-[`sudoku.board.Board`](https://emagri.github.io/sudoku/board.html#board)
-class, passing it a list of 9 rows containing the initial Sudoku puzzle.
+[`Board`](https://emagri.github.io/sudoku/board.html#board) class,
+passing it a list of 9 rows containing the initial Sudoku puzzle.
 
 ``` python
 board = ['8-----41-', 
@@ -93,9 +87,10 @@ b.solve(False)
 
     <Solution.NOT_FOUND: 'solution not found'>
 
-The parameter `use_brute_force` (disabled by default) enables the use of
-brute force in case attemps based on logic are not enough to solve the
-puzzle.
+In the above output, the puzzle was only solved partially. In non solved
+cells, on the right are showed the candidate values. The parameter
+`use_brute_force` (disabled by default) enables the use of brute force
+in case attemps based on logic are not enough to solve the puzzle.
 
 ``` python
 b = Board(board)
@@ -115,3 +110,5 @@ b.solve(True)
      |0--|1--|2--|3--|4--|5--|6--|7--|8--|
 
     <Solution.ONE_SOLUTION: 'found a solution'>
+
+Look at [02_main](main.html) for other examples and tests.

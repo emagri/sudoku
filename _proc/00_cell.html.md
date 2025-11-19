@@ -10,13 +10,19 @@ title: cell
 
 ---
 
-[source](https://github.com/emagri/sudoku/blob/main/sudoku/cell.py#L18){target="_blank" style="float:right; font-size:smaller"}
+[source](https://github.com/emagri/sudoku/blob/main/sudoku/cell.py#L19){target="_blank" style="float:right; font-size:smaller"}
 
 ### Cell
 
 >      Cell (row, col, value=None)
 
 *Cell of Sudoku board*
+
+|    | **Type** | **Default** | **Details** |
+| -- | -------- | ----------- | ----------- |
+| row |  |  | row (0-based) |
+| col |  |  | column (0-based) |
+| value | NoneType | None | initial value |
 
 
 ---
@@ -27,47 +33,12 @@ title: cell
 
 >      House (*values)
 
-*Create a collection of name/value pairs.
-
-Example enumeration:
-
->>> class Color(Enum):
-...     RED = 1
-...     BLUE = 2
-...     GREEN = 3
-
-Access them by:
-
-- attribute access:
-
-  >>> Color.RED
-  <Color.RED: 1>
-
-- value lookup:
-
-  >>> Color(1)
-  <Color.RED: 1>
-
-- name lookup:
-
-  >>> Color['RED']
-  <Color.RED: 1>
-
-Enumerations can be iterated over, and know how many members they have:
-
->>> len(Color)
-3
-
->>> list(Color)
-[<Color.RED: 1>, <Color.BLUE: 2>, <Color.GREEN: 3>]
-
-Methods can be added to enumerations, and members can have their own
-attributes -- see the documentation for details.*
+*Type of house for cells: row, column, 3x3 block*
 
 
 ---
 
-[source](https://github.com/emagri/sudoku/blob/main/sudoku/cell.py#L27){target="_blank" style="float:right; font-size:smaller"}
+[source](https://github.com/emagri/sudoku/blob/main/sudoku/cell.py#L32){target="_blank" style="float:right; font-size:smaller"}
 
 ### Cell.show
 
